@@ -1,0 +1,29 @@
+_schema-version: "3.2"
+ID: NN_Project
+version: 1.0.0
+modules:
+ - name: batch-next-number
+   type: nodejs
+   path: .
+   provides:
+    - name: batch-next-number_api
+      properties:
+         url: ${default-url}
+   requires:
+      - name: nn-postgre-database
+   properties: #module properties for CF Apps can be consumed as app environment variables at runtime
+      PATTERN: "PLANTYYYYDDMMLLNNNNN"
+      NUMBER_BASE: "10"
+      RESET_MODE: "NONE"
+resources:
+  - name: nn-postgre-database
+    parameters:
+      path: ./pg-options.json
+      service: postgresql-db
+      service-plan: trial
+      skip-service-updates:
+        parameters: true
+    type: org.cloudfoundry.managed-service
+
+
+

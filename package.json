@@ -1,0 +1,18 @@
+{
+  "name": "extend_batch_number",
+  "description": "Extend Batch Number with SAP CF Restful Service that uses PostgreSQL DB to store data",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "express": "4.17.2",
+    "body-parser": "1.19.1",
+    "pg-promise": "10.11.1",
+    "@sap/xsenv": "3.2.0",
+    "request": "2.88.2"
+  },
+  "scripts": {
+    "start": "node srv/server.js",
+    "build:cf": "mbt build",
+    "deploy:cf": "cf deploy mta_archives/NN_Project_1.0.0.mtar"
+  }
+}
